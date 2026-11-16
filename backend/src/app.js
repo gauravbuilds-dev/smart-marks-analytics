@@ -1,5 +1,6 @@
 const express = require('express');
 const { checkDatabaseHealth } = require('./db/pool');
+const authRoutes = require('./modules/auth/auth.routes');
 
 const app = express();
 
@@ -27,6 +28,13 @@ app.get('/health', async (req, res) => {
       detail: err.message,
     });
   }
+});
+
+app.use('/api/auth', authRoutes);
+
+app.use((err, req, res, next) => {
+  console.error(err);
+  return res.status(500).json({ error: 'Internal server error' });
 });
 
 module.exports = app;
