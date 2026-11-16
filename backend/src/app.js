@@ -1,6 +1,11 @@
 const express = require('express');
 const { checkDatabaseHealth } = require('./db/pool');
 const authRoutes = require('./modules/auth/auth.routes');
+const studentsRoutes = require('./modules/students/students.routes');
+const subjectsRoutes = require('./modules/subjects/subjects.routes');
+const termsRoutes = require('./modules/terms/terms.routes');
+const assignmentsRoutes = require('./modules/assignments/assignments.routes');
+const examinationsRoutes = require('./modules/examinations/examinations.routes');
 
 const app = express();
 
@@ -31,6 +36,11 @@ app.get('/health', async (req, res) => {
 });
 
 app.use('/api/auth', authRoutes);
+app.use('/api/students', studentsRoutes);
+app.use('/api/subjects', subjectsRoutes);
+app.use('/api/terms', termsRoutes);
+app.use('/api/assignments', assignmentsRoutes);
+app.use('/api/examinations', examinationsRoutes);
 
 app.use((err, req, res, next) => {
   console.error(err);
