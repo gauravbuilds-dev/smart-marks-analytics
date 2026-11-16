@@ -6,6 +6,8 @@ const subjectsRoutes = require('./modules/subjects/subjects.routes');
 const termsRoutes = require('./modules/terms/terms.routes');
 const assignmentsRoutes = require('./modules/assignments/assignments.routes');
 const examinationsRoutes = require('./modules/examinations/examinations.routes');
+const marksRoutes = require('./modules/marks/marks.routes');
+const auditRoutes = require('./modules/audit/audit.routes');
 
 const app = express();
 
@@ -41,6 +43,8 @@ app.use('/api/subjects', subjectsRoutes);
 app.use('/api/terms', termsRoutes);
 app.use('/api/assignments', assignmentsRoutes);
 app.use('/api/examinations', examinationsRoutes);
+app.use('/api/marks', marksRoutes);
+app.use('/api/audit', auditRoutes);
 
 app.use((err, req, res, next) => {
   console.error(err);
